@@ -1,3 +1,8 @@
 # Use this file to keep certain files from being versioned (covered in the GitHub part of the course).
-
+*.csv
+*.rds
+.Rhistory
+.RData
+.RDataTmp
+..Rproj.user/
 .DS_Store
