@@ -1,8 +1,12 @@
 # Use this file to keep certain files from being versioned (covered in the GitHub part of the course).
+#data file structures
 *.csv
 *.rds
+
+#Local R session junk
 .Rhistory
 .RData
 .RDataTmp
-..Rproj.user/
+.Rproj.user/
+
 .DS_Store
