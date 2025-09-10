@@ -1,4 +1,4 @@
-required_packages <- c("tidyverse", "data.table", "here")
+required_packages <- c("tidyverse", "data.table", "here", "googledrive")
 
 for (pkg in required_packages) {
 	if (!requireNamespace(pkg, quietly = TRUE)) {
@@ -127,3 +127,8 @@ dir.create(here("data", "training_data"), recursive = TRUE, showWarnings = FALSE
 
 # Store the training data as .rds file
 saveRDS(reviews_sampled, here("data","training_data","reviews_sampled.rds"))
+local_path <- here("data","training_data","reviews_sampled.rds")	#local path where file is stored
+file_name <- "reviews_sampled.rds"
+
+folder_id <- "1oRNbZpA4kXZRsvcNe5K1FRYFKqqT5W2h"
+			
