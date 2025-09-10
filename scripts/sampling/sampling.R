@@ -45,6 +45,16 @@ review_counts_status <- review_counts[
 closed_50plus <- review_counts_status[n_reviews >= 50 & is_open == 0, .N]
 closed_50plus   #no of restaurants that are closed but have 50+ reviews
 
+checkin <- readRDS(here("data", "raw_data", "checkin.rds"))	#get checkin data in environment
+
+checkin[,date :=na_if(str_trim(date), "")]
+
+checkin[,last_checkin := as.IDate(fifelse(is.na(date),NA_character_, str_sub(date, -19,-10)))]
+
+is.na(checkin$last_checkin)%>%table() #no NA's, so extra safe for future operations
+
+
+
 date_cutoff <- "2018-01-01"
 
     #CLOSED RESTAURANTS
@@ -52,12 +62,18 @@ date_cutoff <- "2018-01-01"
 closed_ids <- restaurant_status[is_open == 0, unique(business_id)]  #closed restaurants id's
 
 since2018_closed <- review_restaurants[
-  business_id %chin% closed_ids & date >= as.IDate(date_cutoff),
+  checkin[, .(business_id, last_checkin)],          # bring in last_checkin by business
+  on = "business_id"
+][
+  business_id %chin% closed_ids & 
+  date >= as.IDate(date_cutoff) & 
+  !is.na(last_checkin) & 
+  date <= last_checkin,                             # only count reviews before last recorded check in time
   .N,
   by = business_id
-]   #list of restaurants that are closed and their no. of reviews since 01 / 01 / 2018
+]
 
-since2018_closed[N >= 100, .N]  #no. of closed restaurants that have 100+ reviews since 2018 
+since2018_closed[N >= 100, .N]  #no. of closed restaurants that have 100+ reviews since 2018, before their last checkin
 
 closed_100plus_since18 <- since2018_closed[N >= 100, business_id] #business_id vector
 
@@ -87,7 +103,13 @@ sampled_ids <- c(sampled_closed_ids, sampled_open_ids)  #vector of all the sampl
 
 review_restaurants[, date_id := as.IDate(date)] #creating date id (YYYY - MM - DD)
 
-review_restaurants_since18 <- review_restaurants[date_id >= as.IDate(date_cutoff)] #filtering date
+# copy last_checkin from `checkin` into `review_restaurants` by business_id
+review_restaurants[checkin, on = "business_id", last_checkin := i.last_checkin]
+
+review_restaurants_since18 <- review_restaurants[
+  date_id >= as.IDate(date_cutoff) &	# after 2018
+  date_id <= last_checkin				# before restaurant's last checkin
+]
 
 setindex(review_restaurants_since18, business_id) #improves speed 
 
