@@ -11,7 +11,7 @@ output: html_document
 
 Online customer reviews play a significant role in shaping how restaurants are perceived by consumers. When searching for new places to eat at, consumers may resort to customer review platforms, such as Yelp, to assess which would be worth giving a try. Therefore, the valence of a restaurant's reviews on several different aspects can impact its success, and ultimately, its survival. Restaurant closures are the endmost sign that a restaurant was unsuccessful as a business, which can happen for several reasons. The aim of this project is then to establish which, if any, aspects of customer reviews are associated to restaurant closures.  
 
-##Managerial benefits
+## Managerial benefits
 
 - Early risk detection: By monitoring review sentiment and topics, managers can identify warning signals of potential closure risk before financial issues become critical.
 
@@ -37,6 +37,16 @@ For closed restaurants, only reviews up to the date of the last check-in (i.e., 
 
 The table below summarizes the most important variables at this stage of the project: 
 
+```{r}
+# Create a table with the variable names
+
+variable_table <- data.frame(
+  Variable = c("business_id", "review_id", "text", "stars", "date", "user_id", "is_open", "checkin", "last_checkin"),
+  Description = c("The business ID of the reviewed company", "The ID of the review", "The complete review of the user", "The amount of stars (between 1-5) given by the user", "The timestamp of the review", "The ID of the user who submitted the review", "Whether the restaurant is active/open (1) or closed (0)", "All recorded checkin timestamps of reviews for a company", "The last recorded checkin timestamp of a review for a company")
+)
+
+variable_table
+```
 
 ## Method
 
@@ -321,5 +331,7 @@ drive_download(as_id(file_id), path = here("data", "training_data",filename), ov
 
 reviews_sampled <- readRDS(here("data", "training_data", filename))
 ```
+
+
 
 
