@@ -5,39 +5,24 @@ output:
   html_document: default
 ---
 
-# A topic modeling study: The association between Yelp review sentiment and restaurant survival or closure
-
+# A topic modeling study: The association between Yelp reviews' sentiment and restaurant closures
 *Which aspects of the feedback provided by Yelp customer reviews are associated with restaurant closures?* 
 
+
 ## Motivation
+Online customer reviews play a significant role in shaping how restaurants are perceived by consumers. When searching for new places to eat at, consumers may resort to customer review platforms, such as Yelp, to establish which of several would be worth giving a try. Therefore, the valence of a restaurant's reviews on several different aspects can impact its success, and ultimately, its survival. Restaurant closures are the endmost sign that a restaurant was unsuccessful as a business, something that can occur for several reasons. The aim of this project is then to explore which, if any, aspects of customer reviews are associated to restaurant closures. To do so, a sample of Yelp's restaurant reviews will be used.
 
-Online customer reviews play a significant role in shaping how restaurants are perceived by consumers. When searching for new places to eat at, consumers may resort to customer review platforms, such as Yelp, to assess which would be worth giving a try. Therefore, the valence of a restaurant's reviews on several different aspects can impact its success, and ultimately, its survival. Restaurant closures are the endmost sign that a restaurant was unsuccessful as a business, which can happen for several reasons. The aim of this project is then to establish which, if any, aspects of customer reviews are associated to restaurant closures.  
+Investigating the research question *Which aspects of the feedback provided by Yelp customer reviews are associated with restaurant closures?* is crucial, as the insights derived from it may help current and prospective restaurant owners in detecting potential threats to their establishments' survival. That is, restaurant owners can use our results to, for example, be able to identify warning signs of when their restaurant's survival might be at risk, establish which key areas warrant improvement to exceed customer expectations, and adjust their business strategies to address early signs of threats before they escalate into critical issues. 
 
-## Managerial benefits
-
-- Early risk detection: By monitoring review sentiment and topics, managers can identify warning signals of potential closure risk before financial issues become critical.
-
-- Improved customer experience: Insights into recurring complaints or praised aspects help managers focus resources on what customers value most.
-
-- Resource prioritization: Helps allocate marketing and operational investments toward areas with the greatest impact on survival.
 
 ## Data
+The dataset used was Yelp Open Dataset, a public dataset provided by the review platform *Yelp*. This dataset was obtained via the following link: [Yelp Open Dataset](https://business.yelp.com/data/resources/open-dataset/). 
 
-To succeed in our purpose the following datasets were used:
+The dataset contains 5 subsets of data: *business*, *review*, *checkin*, *tip*, and *user*, but only the *business*, *review*, and *checkin* subsets were relevant for our study. The *business* subset contains general business data including location, attributes, categories, and information on whether restaurants are open or closed; the *review* subset contains full review texts and metadata; and the *checkin* subset contains comma-separated timestamps for every logged check-in of each restaurant.
 
-- **yelp_academic_dataset_business**, which contains business information and open/closed status,
-- **yelp_academic_dataset_review**, which contains review texts and metadata
-- **yelp_academic_dataset_checkin**, which contains information regarding the last check-ins
+Furthermore, the dataset contains millions of reviews on a variety of types of establishments, services, and experiences that lay outside the scope of our project. Thus, we constructed a balanced dataset that consists of a random sample of 5000 restaurant reviews, ***reviews_sampled.rds***. This sample included 100 restaurants (50 of which open, and 50 of which closed) that each have at least 100 reviews since 2018. For closed restaurants, only reviews up to the date of the last check-in (i.e. while they were still active) were considered. For each restaurant, 50 reviews were randomly selected, resuting in the final sample of 5000 observations. 
 
-From these sources we constructed a balanced sampled dataset, **reviews_sampled.rds**.
-
-It includes 100 restaurants (50 open and 50 closed) with at least 100 reviews since 2018.
-
-For each restaurant, 50 reviews were randomly selected, resulting in about 5,000 observations with 11 variables covering text, dates, and business identifiers.
-
-For closed restaurants, only reviews up to the date of the last check-in (i.e., while they were still active) are considered.
-
-The **table** below summarizes the most important variables at this stage of the project: 
+The table below summarizes the most important variables at this stage of the project:
 
 ```{r}
 # Create a table with the variable names
@@ -52,10 +37,7 @@ variable_table
 
 ## Method
 
-To succeed in our purpose the following methods will be used: 
-- **Sentiment analysis** to classify reviews (positive vs negative)
-- **Topic modeling** to understand the relevant topics in positive vs negative reviews
-- **Regression** to test whether certain topics associated with a specific type of review (positive or negative)  impacts on restaurants’ closure
+To answer our research question, which is of exploratory nature, we first conducted a sentiment analysis on the 5000- reviews sample. This allowed us to classify the reviews as being of positive or negative nature. We then used topic modeling to identify relevant aspects of positive vs. negative reviews. Lastly, we checked which of, and whether, these aspects are associated to restarant closures.
 
 This integrated approach provides a clear and data-driven way to link review content to business outcomes.
 
@@ -302,6 +284,9 @@ reviews_sampled <- review_restaurants_since18[
   by = business_id                  #per business_id
 ]
 
+#adding the is_open variable
+reviews_sampled <- reviews_sampled %>%
+  left_join(business %>% select(business_id, is_open), by = "business_id")
 ```
 
 #### Storing the training data for future use
@@ -337,6 +322,9 @@ file_id <- folder[folder$name==filename] %>% pull(id) %>% as.character()
 drive_download(as_id(file_id), path = here("data", "training_data",filename), overwrite = TRUE)
 
 reviews_sampled <- readRDS(here("data", "training_data", filename))
+
+reviews_sampled <- reviews_sampled %>%
+  left_join(business %>% select(business_id, is_open), by = "business_id")
 ```
 
 
