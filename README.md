@@ -1,15 +1,9 @@
-> **Important:** This is a template repository to help you set up your team project.  
->  
-> You are free to modify it based on your needs. For example, if your data is downloaded using *multiple* scripts instead of a single one (as shown in `\data\`), structure the code accordingly. The same applies to all other starter files—adapt or remove them as needed.  
->  
-> Feel free to delete this text.
-
-
-# Title of your Project
-*Describe the purpose of this project* 
+# A topic modeling study: The association between Yelp review sentiment and restaurant survival or closure
+*Which aspects of the feedback provided by Yelp customer reviews are associated with restaurant closures?* 
 
 ## Motivation
 
+Online customer reviews play a significant role in shaping how restaurants are perceived by consumers. When searching for new places to eat at, consumers may resort to customer review platforms, such as Yelp, to assess which would be worth giving a try. Therefore, the valence of a restaurant's reviews on several different aspects can impact its success, and ultimately, its survival. Restaurant closures are the endmost sign that a restaurant was unsuccessful as a business, which can happen for several reasons. The aim of this project is then to establish which, if any, aspects of customer reviews are associated to restaurant closures.  
 *Provide background/motivation for your project*
 
 **Mention your research question**
