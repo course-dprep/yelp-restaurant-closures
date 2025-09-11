@@ -9,7 +9,7 @@ Investigating the research question *Which aspects of the feedback provided by Y
 
 ## Data
 
-The dataset used was Yelp Open Dataset, a public dataset provided by the review platform "Yelp". This dataset was obtained via the following link: [Yelp Open Dataset] (https://business.yelp.com/data/resources/open-dataset/). 
+The dataset used was Yelp Open Dataset, a public dataset provided by the review platform "Yelp". This dataset was obtained via the following link: [Yelp Open Dataset](https://business.yelp.com/data/resources/open-dataset/). 
 
 The dataset contains holds millions of reviews on a variety of types of establishments, services, and experiences, which lay outside the scope of our project. To properly study our research question, we then narrowed down the dataset to a random sample of 5000 restaurant reviews. In the case of those restaurants that did close, only reviews written prior to their closure dates were included in the final sample. In other words, no reviews written after a restaurant's closure date are included in the final sample.
 
