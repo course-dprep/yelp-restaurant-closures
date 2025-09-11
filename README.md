@@ -1,4 +1,4 @@
-# A topic modeling study: The association between Yelp review sentiment and restaurant survival or closure
+# A topic modeling study: The association between Yelp reviews' sentiment and restaurant closures
 *Which aspects of the feedback provided by Yelp customer reviews are associated with restaurant closures?* 
 
 ## Motivation
