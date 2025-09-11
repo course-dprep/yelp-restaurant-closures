@@ -1,6 +1,8 @@
 ---
 title: "deliverable_week2"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 # A topic modeling study: The association between Yelp review sentiment and restaurant survival or closure
@@ -35,7 +37,7 @@ For each restaurant, 50 reviews were randomly selected, resulting in about 5,000
 
 For closed restaurants, only reviews up to the date of the last check-in (i.e., while they were still active) are considered.
 
-The table below summarizes the most important variables at this stage of the project: 
+The **table** below summarizes the most important variables at this stage of the project: 
 
 ```{r}
 # Create a table with the variable names
@@ -51,13 +53,13 @@ variable_table
 ## Method
 
 To succeed in our purpose the following methods will be used: 
-- Sentiment analysis to classify reviews (positive vs negative)
-- Topic modeling to understand the relevant topics in positive vs negative reviews
-- Regression to test whether certain topics associated with a specific type of review (positive or negative)  impacts on restaurants’ closure
+- **Sentiment analysis** to classify reviews (positive vs negative)
+- **Topic modeling** to understand the relevant topics in positive vs negative reviews
+- **Regression** to test whether certain topics associated with a specific type of review (positive or negative)  impacts on restaurants’ closure
 
 This integrated approach provides a clear and data-driven way to link review content to business outcomes.
 
-##Data downloading and preparation
+## Data downloading
 
 ```{r}
 #Check if all dependencies are installed, and install if needed
@@ -121,9 +123,11 @@ for (dataset in datasets) {
 
 ```
 
-## Sampling
+## Data preparation
 
-## Loading the raw data
+### Sampling
+
+#### Loading the raw data
 
 For the sampling, the following datasets are needed:
 - review.rds
@@ -150,7 +154,7 @@ review_restaurants <- review[.(restaurant_ids), on = "business_id", nomatch = 0L
 uniqueN(review_restaurants$business_id)  # should return 52268
 ```
 
-## Counting # of reviews per Restaurant
+#### Counting n. of reviews per Restaurant
 
 To make sure that we have enough training data for our prediction model, a restaurant needs to have at least 50 reviews in the dataset. This makes it a necessity to compute the # of reviews per restaurant in the data.
 
@@ -159,7 +163,7 @@ To make sure that we have enough training data for our prediction model, a resta
 review_counts <- review_restaurants[, .(n_reviews = .N), by = business_id]
 ```
 
-## Collecting open/closed variable
+#### Collecting open/closed variable
 
 Since our research is also focused on threat detection, it is important to check what percentage of restaurants is actually closed in the dataset. If this percentage is very low, we need to inflate the percentage of closed restaurants in our dataset as this will improve the model's ability to identify at-risk businesses due to the increased representation of the minority class. Without rebalancing, the model could become very "good" by predicting all businesses remain open, while completely failing to capture characteristics that could predict risk of closing.
 
@@ -185,7 +189,8 @@ closed_50plus <- review_counts_status[n_reviews >= 50 & is_open == 0, .N]
 closed_50plus   #no of restaurants that are closed but have 50+ reviews
 ```
 
-## Creating business_id vectors
+#### Creating business_id vectors
+
 In this part, we will create business_id vectors with the following characteristics:
 
 **closed_ids vector:**
@@ -250,7 +255,7 @@ open_100plus_since18 <- since2018_open[N >= 100, business_id] #business_id vecto
 
 ```
 
-## Randomly selecting business_id's from the business_id vectors
+#### Randomly selecting business_id's from the business_id vectors
 
 We just created the following two business_id vectors:
 
@@ -268,7 +273,7 @@ sampled_open_ids <- sample(open_100plus_since18, 50)      #sampled business id's
 
 ```
 
-## Randomly selecting reviews for the selected restaurants
+#### Randomly selecting reviews for the selected restaurants
 
 For the randomly selected business id's, we need to select a certain no. of reviews as well. We opted for 50 reviews per restaurant. This means our final training dataset will contain:
 
@@ -299,7 +304,7 @@ reviews_sampled <- review_restaurants_since18[
 
 ```
 
-## Storing the training data for future use
+#### Storing the training data for future use
 
 We now store the selected traning data for future use in a training_data folder
 - Check if training_data folder is present
@@ -319,7 +324,9 @@ folder_id <- "1oRNbZpA4kXZRsvcNe5K1FRYFKqqT5W2h"
 			
 ```
 
-##Alternatively te dataset can be downloaded by google drive
+##### Alternative
+
+*the ultimate dataset can be downloaded by google drive*
 
 ```{r}
 folder_id <- "1oRNbZpA4kXZRsvcNe5K1FRYFKqqT5W2h"	#folder id
