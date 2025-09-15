@@ -47,9 +47,9 @@ This integrated approach provides a clear and data-driven way to link review con
 
 Please follow the installation guides on [Tilburg Science Hub](https://tilburgsciencehub.com/)
 
-+R
-[R Installation Guide])https://tilburgsciencehub.com/topics/computer-setup/software-installation/rstudio/r/)
-+Make
++ R
+[R Installation Guide](https://tilburgsciencehub.com/topics/computer-setup/software-installation/rstudio/r/)
++ Make
 [Installation Guide](https://tilburgsciencehub.com/topics/automation/automation-tools/makefiles/make/)
 
 ```{r}
