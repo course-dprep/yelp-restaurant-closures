@@ -52,6 +52,8 @@ Please follow the installation guides on [Tilburg Science Hub](https://tilburgsc
 + Make
 [Installation Guide](https://tilburgsciencehub.com/topics/automation/automation-tools/makefiles/make/)
 
+Now, copy and run the following code in R:
+
 ```{r}
 required_packages <- c("tidyverse", "data.table", "here", "googledrive", "dplyr")
 
