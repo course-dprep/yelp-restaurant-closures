@@ -71,7 +71,52 @@ invisible(lapply(required_packages, function(pkg) {
 
 ## Running Instructions 
 
-*Provide step-by-step instructions that have to be followed to run this workflow.*
+Here’s a concise **Step-by-Step** :
+
+1. **install packages**
+   
+install.packages(c("rmarkdown","knitr","tidyverse","data.table","here","googledrive"))
+   ```
+2. **Download data** form Yelp
+
+Downloads Yelp CSVs from Google Drive (public folder) only if not present, converts to `.rds`.
+
+3. **Load data** into the environment
+
+4. **create the sample**
+
+- From `business`, keep only businesses with category *Restaurants*.
+
+- Extract their `business_id` values and join with the `review` dataset.
+
+- Compute the number of reviews per restaurant (`n_reviews`).
+
+- Keep only restaurants with at least 50 reviews.
+
+- Merge in the `is_open` variable from `business`.
+
+- Check the proportion of open vs. closed restaurants.
+
+- Define selection criteria: close vs open, where:
+
+Closed\_ids: closed restaurants with **100+ reviews since Jan 1, 2018**, counted only until their last check-in.
+Open\_ids: open restaurants with **100+ reviews since Jan 1, 2018**.
+
+- Sample restaurants
+50 closed restaurants
+50 open restaurants
+
+- Sample reviews
+
+For each selected restaurant, randomly sample **50 reviews** (after 2018, and before last check-in if closed).
+
+Final dataset size: (50 × 50) + (50 × 50) = **5,000 reviews**.
+
+Add the `is_open` variable to the sampled reviews (label open/closed).
+
+- Save final dataset
+
+- Alternatively, download it directly from Google Drive.
 
 ## About 
 
