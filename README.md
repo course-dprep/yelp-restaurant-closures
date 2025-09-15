@@ -45,7 +45,27 @@ This integrated approach provides a clear and data-driven way to link review con
 
 ## Dependencies 
 
-*Explain any tools or packages that need to be installed to run this workflow.*
+Please follow the installation guides on [Tilburg Science Hub](https://tilburgsciencehub.com/)
+
++R
+[R Installation Guide])https://tilburgsciencehub.com/topics/computer-setup/software-installation/rstudio/r/)
++Make
+[Installation Guide](https://tilburgsciencehub.com/topics/automation/automation-tools/makefiles/make/)
+
+```{r}
+required_packages <- c("tidyverse", "data.table", "here", "googledrive", "dplyr")
+
+for (pkg in required_packages) {
+	if (!requireNamespace(pkg, quietly = TRUE)) {
+		suppressMessages(install.packages(pkg))
+	}
+}
+#load all the dependencies
+invisible(lapply(required_packages, function(pkg) {
+	suppressPackageStartupMessages(library(pkg, character.only = TRUE))
+}))
+
+```
 
 ## Running Instructions 
 
