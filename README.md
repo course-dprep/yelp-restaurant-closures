@@ -30,7 +30,15 @@ variable_table
 
 ## Method
 
-To answer our research question, which is of exploratory nature, we first conducted a sentiment analysis on the 5000- reviews sample. This allowed us to classify the reviews as being of positive or negative nature. We then used topic modeling to identify relevant aspects of positive vs. negative reviews. Lastly, we checked which of, and whether, these aspects are associated to restarant closures.
+To answer our research question, which is of exploratory nature, we first conducted a **sentiment analysis** on the 5000- reviews sample. In order to do the sentiment analysis we created our own dictionary combining different techniques like reviewing clusters from BERTopic and word frequency tables on usefull identified themes. This allowed us to classify usefull themes, variables and key words accross reviews. 
+
+Thereafter, to perform the sentiment analysis we apply Quanteda to compute variables indicating whether each theme appears in a review. These aggregate sentiment scores and theme scores per restaurant are especially usefull, and gives us both “what people talk about” (topics) and “how they feel about it”. Which finally will be tested against which of, and whether, these aspects are associated to restarant closures.
+
+If there is time we could: 
+
+-Fit Statistical Model 
+
+-Model Validation
 
 This integrated approach provides a clear and data-driven way to link review content to business outcomes. 
 
