@@ -2,7 +2,7 @@
 #data file structures
 *.csv
 *.rds
-
+*.here
 #Local R session junk
 .Rhistory
 .RData
@@ -12,3 +12,5 @@
 .DS_Store
 
 .secrets/
+
+__pycache__/
