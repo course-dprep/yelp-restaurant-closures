@@ -30,11 +30,11 @@ variable_table
 
 ## Method
 
-To answer our research question, which is of exploratory nature, we first conducted a **sentiment analysis** on the 5000- reviews sample. In order to do the sentiment analysis we created our own dictionary combining different techniques like reviewing clusters from BERTopic and word frequency tables on usefull identified themes. This allowed us to classify usefull themes, variables and key words accross reviews. 
+To answer our research question, which is of exploratory nature, we first conducted a **sentiment analysis** on the 5000- reviews sample. In order to do the sentiment analysis we created our own dictionary combining different techniques like reviewing clusters from BERTopic and word frequency tables on usefull identified themes. This allowed us to classify useful themes, variables and key words accross reviews. 
 
-Thereafter, to perform the sentiment analysis we apply Quanteda to compute variables indicating whether each theme appears in a review. These aggregate sentiment scores and theme scores per restaurant are especially usefull, and gives us both “what people talk about” (topics) and “how they feel about it”. Which finally will be tested against which of, and whether, these aspects are associated to restarant closures.
+Thereafter, to perform the sentiment analysis we apply Quanteda to compute variables indicating whether each theme appears in a review. These aggregate sentiment scores and theme scores per restaurant are especially useful, and gives us both “what people talk about” (topics) and “how they feel about it”. Which finally will be tested against which of, and whether, these aspects are associated to restaurant closures.
 
-If there is time we could: 
+If there is enough time available we could: 
 
 -Fit Statistical Model 
 
