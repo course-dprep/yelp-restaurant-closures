@@ -17,7 +17,7 @@ Furthermore, the dataset contains millions of reviews on a variety of types of e
 
 The table below summarizes the most important variables at this stage of the project:
 
-<img width="1006" height="474" alt="image" src="https://github.com/user-attachments/assets/a273114f-f1bc-4b48-81ac-de9693932120" />
+<img width="500" height="200" alt="image" src="https://github.com/user-attachments/assets/a273114f-f1bc-4b48-81ac-de9693932120" />
 
 ## Method
 
@@ -43,7 +43,7 @@ This integrated approach provides a clear and data-driven way to link review con
 - reporting/ → contains R Markdown files documenting the project’s progress and results.
 - scripts/ → contains both R and Python scripts developed for the project.
 - cloudstorage/ → contains a file with the link to the shared Google Drive folder (e.g., Google Docs and other shared resources).
-- 
+  
 ## Dependencies 
 
 Please follow the installation guides on [Tilburg Science Hub](https://tilburgsciencehub.com/)
@@ -119,7 +119,7 @@ Add the `is_open` variable to the sampled reviews (label open/closed).
 
 - Alternatively, download it directly from Google Drive.
 
-  5. **topic modelling**
+5. **topic modelling**
 
 The goal of this stage is to identify the most relevant topics discussed in the reviews. These topics will later be analyzed, together with sentiment, to assess whether they have an impact on restaurant closures.
 
