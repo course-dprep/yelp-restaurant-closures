@@ -126,6 +126,23 @@ Add the `is_open` variable to the sampled reviews (label open/closed).
 
 - Alternatively, download it directly from Google Drive.
 
+  5. **topic modelling**
+
+The goal of this stage is to identify the most relevant topics discussed in the reviews. These topics will later be analyzed, together with sentiment, to assess whether they have an impact on restaurant closures.
+
+On python:
+
+- We converted reviews into embeddings and clustered them into 18 topics.  
+- We assigned each review to a main topic, based on the highest probability of that topic occurring in the review.
+- We exported the file in csv for further analysis
+
+On r: we identified the most useful topics and marked them in a specific column named "utility" for downstream analysis.
+
+Next steps for topic modelling: 
+
+- Word Frequency & Dictionary Creation: Count the most frequent words in the reviews to build a dictionary of themes from the useful clusters and frequent words.
+– Expanding the Dictionary with keyATM: Use keyATM to identify synonyms or related phrases we might have missed.
+
 ## About 
 
 This repository was made by Geert Huissen, Alice Ruggiero, Mathijs Quarles van Ufford, Nigel de Jong, and Maria Orgaz Jimenez as part of the Master's course [Data Preparation & Programming Skills](https://dprep.hannesdatta.com/) at the [Department of Marketing](https://www.tilburguniversity.edu/about/schools/economics-and-management/organization/departments/marketing), [Tilburg University](https://www.tilburguniversity.edu/), the Netherlands.
