@@ -400,17 +400,7 @@ reviews_with_theme <- reviews_python_out_aggregated %>%
 
 ```
 
-**STEP2_word frequency and dictonary**:
 
-- We computed a list of the most useful words that occur most frequently in the reviews.
-- We created a dictonary of themes (list of comparable topics across restaurants) from the useful words and BERTopic themes
-
-  
-**STEP3_dictionary expansion (keyATM)**:
-
-- We used the keyATM package to test whether additional words systematically co-occur with our dictionary terms. This helps capture synonyms or related words we might have missed.
-
-- We refined the theme dictionary accordingly.
 
 
 
