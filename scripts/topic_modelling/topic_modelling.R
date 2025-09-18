@@ -15,7 +15,7 @@ folder_id <- "1oRNbZpA4kXZRsvcNe5K1FRYFKqqT5W2h"	#folder id
 googledrive::drive_deauth()
 folder <- drive_ls(as_id(folder_id))
 filename <- "reviews_sampled.rds"
-file_id <- folder[folder$name==filename] %>% pull(id) %>% as.character()
+file_id <- folder[folder$name==filename,] %>% pull(id) %>% as.character()
 drive_download(as_id(file_id), path = here("data", "training_data",filename), overwrite = TRUE)
 
 reviews_sampled <- readRDS(here("data", "training_data", filename))
