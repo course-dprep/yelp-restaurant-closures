@@ -17,16 +17,7 @@ Furthermore, the dataset contains millions of reviews on a variety of types of e
 
 The table below summarizes the most important variables at this stage of the project:
 
-```{r}
-# Create a table with the variable names
-
-variable_table <- data.frame(
-  Variable = c("business_id", "review_id", "text", "stars", "date", "user_id", "is_open", "checkin", "last_checkin"),
-  Description = c("The business ID of the reviewed company", "The ID of the review", "The complete review of the user", "The amount of stars (between 1-5) given by the user", "The timestamp of the review", "The ID of the user who submitted the review", "Whether the restaurant is active/open (1) or closed (0)", "All recorded checkin timestamps of reviews for a company", "The last recorded checkin timestamp of a review for a company")
-)
-
-variable_table
-```
+<img width="1006" height="474" alt="image" src="https://github.com/user-attachments/assets/a273114f-f1bc-4b48-81ac-de9693932120" />
 
 ## Method
 
@@ -48,9 +39,11 @@ This integrated approach provides a clear and data-driven way to link review con
 - Explain the relevance of these findings/product. 
 
 ## Repository Overview 
-
-**Include a tree diagram that illustrates the repository structure*
-
+- data/ → contains the datasets used in the project.
+- reporting/ → contains R Markdown files documenting the project’s progress and results.
+- scripts/ → contains both R and Python scripts developed for the project.
+- cloudstorage/ → contains a file with the link to the shared Google Drive folder (e.g., Google Docs and other shared resources).
+- 
 ## Dependencies 
 
 Please follow the installation guides on [Tilburg Science Hub](https://tilburgsciencehub.com/)
