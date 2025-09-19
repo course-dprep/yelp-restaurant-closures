@@ -49,7 +49,7 @@ head(word_freq, 200)
 dict <- dictionary(list(
   food_quality = c("delicious", "flavor", "tasty"),
   cleanliness = c("fresh", "clean"),
-  staff = c("friendly, staff, service, server, waitress, waiter, manager, attentive"),
+  staff = c("friendly", "staff"", "service"", "server", "waitress", "waiter", "manager", "attentive"),
   price = c("price"),
   waiting_time = c("wait")
   ))
